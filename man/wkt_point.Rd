@@ -4,19 +4,23 @@
 \alias{wkt_point}
 \title{Random WKT point}
 \usage{
-wkt_point(count = 1, bbox = NULL, fmt = 7)
+wkt_point(count = 1, bbox = NULL, fmt = 7, as_multi = FALSE)
 }
 \arguments{
 \item{count}{(integer/numeric) number of points. Default: 1}
 
 \item{bbox}{(integer/numeric) lat/long bounding box from which to generate
-positions; numeric vector of the form
-\code{west (long), south (lat), east (long), north (lat)}. optional}
+positions; numeric vector of the form \code{west (long), south (lat), east
+  (long), north (lat)}. optional}
 
 \item{fmt}{(integer/numeric) number of digits. Default: 7}
+
+\item{as_multi}{(logical) if \code{TRUE} then a MULTIPOINT is returned, else
+a character vector of POINT strings is returned. Default: FALSE.}
 }
 \value{
-WKT; a character vector with one ore more POINT strings
+WKT; a character vector with one ore more POINT strings or a
+MULTIPOINT string if as_multi is \code{TRUE}
 }
 \description{
 Random WKT point
@@ -31,4 +35,5 @@ wkt_point(fmt = 6)
 wkt_point(fmt = 7)
 
 wkt_point(bbox = c(50, 50, 60, 60))
+wkt_point(3, as_multi = TRUE)
 }

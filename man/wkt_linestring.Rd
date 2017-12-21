@@ -5,7 +5,7 @@
 \title{Random WKT linestring}
 \usage{
 wkt_linestring(count = 1, num_vertices = 10, max_length = 1e-04,
-  max_rotation = pi/8, bbox = NULL, fmt = 7)
+  max_rotation = pi/8, bbox = NULL, fmt = 7, as_multi = FALSE)
 }
 \arguments{
 \item{count}{(integer/numeric) number of Polygons. Default: 1}
@@ -25,9 +25,13 @@ the line, numeric vector of the form \code{west (long), south (lat), east
   (long), north (lat)}. optional}
 
 \item{fmt}{(integer/numeric) number of digits. Default: 7}
+
+\item{as_multi}{(logical) if \code{TRUE} then a MULTILINESTRING is returned,
+else a character vector of LINESTRING strings is returned. Default: FALSE.}
 }
 \value{
-WKT; a character vector with one or more LINESTRING strings
+WKT; a character vector with one or more LINESTRING strings or a
+MULTILINESTRING string if as_multi is \code{TRUE}
 }
 \description{
 Random WKT linestring
@@ -37,4 +41,5 @@ wkt_linestring()
 wkt_linestring(10)
 wkt_linestring(num_vertices = 4)
 wkt_linestring(bbox = c(50, 50, 60, 60))
+wkt_linestring(3, as_multi = TRUE)
 }
