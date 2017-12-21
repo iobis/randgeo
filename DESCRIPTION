@@ -1,9 +1,9 @@
 Package: randgeo
 Title: Generate Random 'WKT' or 'GeoJSON'
 Description: Generate random positions (latitude/longitude), 
-    Well-known text ('WKT') points or polygons, or 'GeoJSON' points or 
-    polygons. 
-Version: 0.2.3.9100
+    Well-known text ('WKT') points, lines or polygons, or 'GeoJSON' points, 
+    lines or polygons. 
+Version: 0.2.3.9101
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Noam", "Ross", role = "aut"),

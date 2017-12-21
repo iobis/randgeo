@@ -44,3 +44,13 @@ test_that("wkt_linestring fails well", {
 
   expect_error(wkt_linestring(fmt = 145), "invalid 'nsmall' argument")
 })
+
+test_that("wkt_linestring as_multi=TRUE returns a MULTILINESTRING", {
+  aa <- wkt_linestring(2, as_multi=TRUE)
+
+  expect_is(aa, "character")
+  expect_match(aa, "^MULTILINESTRING")
+  expect_match(aa, "\\(\\([-]?[0-9]")
+  expect_match(aa, "[0-9]\\)\\)$")
+  expect_match(aa, "[0-9]\\), \\([-]?[0-9]")
+})

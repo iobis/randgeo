@@ -37,3 +37,13 @@ test_that("wkt_point fails well", {
 
   expect_error(wkt_point(fmt = 145), "invalid 'nsmall' argument")
 })
+
+test_that("wkt_point as_multi=TRUE returns a MULTIPOINT", {
+  aa <- wkt_point(2, as_multi=TRUE)
+
+  expect_is(aa, "character")
+  expect_match(aa, "^MULTIPOINT")
+  expect_match(aa, "\\(\\([-]?[0-9]")
+  expect_match(aa, "[0-9]\\)\\)$")
+  expect_match(aa, "[0-9]\\), \\([-]?[0-9]")
+})

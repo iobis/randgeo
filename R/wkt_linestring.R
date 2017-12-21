@@ -13,18 +13,30 @@
 #'   the line, numeric vector of the form \code{west (long), south (lat), east
 #'   (long), north (lat)}. optional
 #' @param fmt (integer/numeric) number of digits. Default: 7
-#' @return WKT; a character vector with one or more LINESTRING strings
+#' @param as_multi (logical) if \code{TRUE} then a MULTILINESTRING is returned,
+#'   else a character vector of LINESTRING strings is returned. Default: FALSE.
+#' @return WKT; a character vector with one or more LINESTRING strings or a
+#'   MULTILINESTRING string if as_multi is \code{TRUE}
 #' @examples
 #' wkt_linestring()
 #' wkt_linestring(10)
 #' wkt_linestring(num_vertices = 4)
 #' wkt_linestring(bbox = c(50, 50, 60, 60))
+#' wkt_linestring(3, as_multi = TRUE)
 wkt_linestring <- function(count = 1, num_vertices = 10, max_length = 0.0001,
-                           max_rotation = pi / 8, bbox = NULL, fmt = 7) {
+                           max_rotation = pi / 8, bbox = NULL, fmt = 7,
+                           as_multi = FALSE) {
   assert(fmt, c('numeric', 'integer'))
   res <- geo_linestring(count, num_vertices, max_length, max_rotation, bbox)
-  unlist(
-    lapply(res$features, function(z)
-      to_wkt_linestring(z$geometry$coordinates[[1]], fmt))
-  )
+  if(as_multi) {
+    to_wkt_multilinestring(
+      lapply(res$features, function(z) z$geometry$coordinates[[1]]),
+      fmt)
+  } else {
+    unlist(
+      lapply(res$features, function(z)
+        to_wkt_linestring(z$geometry$coordinates[[1]], fmt))
+    )
+  }
+
 }

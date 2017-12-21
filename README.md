@@ -8,17 +8,17 @@ randgeo: random WKT and GeoJSON
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/randgeo?color=C9A115)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/randgeo)](https://cran.r-project.org/package=randgeo)
 
-**randgeo** generates random points and shapes in GeoJSON and WKT formats for use
+**randgeo** generates random points, lines and shapes in GeoJSON and WKT formats for use
 in examples, teaching, or statistical applications.
 
-Points and shapes are generated in the long/lat coordinate system and with
+Points, lines and shapes are generated in the long/lat coordinate system and with
 appropriate spherical geometry; random points are distributed evenly across
 the globe, and random shapes are sized according to a maximum great-circle
 distance from the center of the shape. 
 
 **randgeo** was adapted from <https://github.com/tmcw/geojson-random> to have a pure R
 implementation without any dependencies as well as appropriate geometry. Data generated
-by **randgeo** may be processed or displayed of with packages such as
+by **randgeo** may be processed or displayed with packages such as
 [**sf**](https://cran.r-project.org/package=sf),
 [**wicket**](https://cran.r-project.org/package=wicket),
 [**geojson**](https://cran.r-project.org/package=geojson),
